@@ -1,0 +1,8 @@
+###############################################################################
+# git repo manifest
+# 
+# one repo per line
+# 
+# {remote_repo_url} {local_repo}
+###############################################################################
+git@github.com:kubernetes-up-and-running/examples.git examples

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# add build harness bin dir to path
+export PATH=./build-harness/bin:$PATH
+
+# add build harness vendor dir to path
+export PATH=./build-harness/vendor:$PATH
+
+# source repos for this project are listed in the repo-manifest file
+# the bootstrap make target will clone repos from the manifest to the $REPO_PATH
+export REPO_PATH=./src
