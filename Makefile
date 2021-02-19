@@ -16,3 +16,6 @@ minikube:
 	minikube config set memory 16384
 	minikube start
 .PHONY: minikube
+
+vagrant:
+	vagrant up

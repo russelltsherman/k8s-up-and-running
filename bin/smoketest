@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+CLUSTER_IP="192.168.5.11"
+CONTROLLER_IP="192.168.5.21"
+SSH="SSH -o StrictHostKeyChecking=no vagrant@$CONTROLLER_IP"
+
+
+echo ""
+echo "Check ETCD Response"
+echo "##################################################"
+$SSH "sudo ETCDCTL_API=3 etcdctl member list \
+  --endpoints=https://127.0.0.1:2379 \
+  --cacert=/etc/kubernetes/pki/ca.crt \
+  --cert=/etc/kubernetes/pki/etcd-server.crt \
+  --key=/etc/kubernetes/pki/etcd-server.key"
+
+
+echo ""
+echo "Check Kubernetes API version response"
+echo "##################################################"
+curl "https://${CLUSTER_IP}:6443/version" -k
+
+
+echo ""
+echo "Check Kubernetes nodes"
+echo "##################################################"
+$SSH "kubectl get nodes"
+
+
+echo ""
+echo "Check Kubernetes componentstatuses"
+echo "##################################################"
+$SSH "kubectl get componentstatuses"
+
+
+echo ""
+echo "Check Kubernetes pods"
+echo "##################################################"
+$SSH "kubectl get pods --all-namespaces"
+
+
+echo ""
+echo "Check Calico pods"
+echo "##################################################"
+$SSH "calicoctl get nodes"
+

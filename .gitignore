@@ -1,6 +1,9 @@
 # ignore build harness
 *build-harness
 
+# ignore vagrant cache
+.vagrant
+
 # ignore direnv vars
 .vars
 
